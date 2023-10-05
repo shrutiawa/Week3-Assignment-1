@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            box-sizing: border-box;
+            width:800px;
+            margin:100px auto;
+            text-align: justify;    
+        }
+        #searchButton{
+            width:50%;
+            height:30px;
+            margin-right:10px;
+            border-radius: 10px;
+        }
+        .btn{
+            background-color: #386641;
+            font-size: 20px;
+            color: black;
+            height: 40px;
+            width:100px;
+            border-radius: 10px;
+        }
+        .btn:hover{
+            background-color: #6a994e;
+            cursor: pointer;
+        }
+        .highlight {
+            background-color: yellow;
+        }
+    </style>
+    <script>
+        function searchHandler(){
+            var searchText = document.getElementById('searchButton').value;
+            clear();
+            var para= document.getElementById('paragraph');
+            var text = para.innerHTML;
+            var regex=new RegExp(searchText, 'gi')
+            var highlightText = text.replace(regex, function(hello){
+                return '<span class="highlight">'+hello+'</span>';
+            });
+            para.innerHTML = highlightText;
+            console.log(para.innerHTML)
+        }
+        function clear(){
+            const para = document.getElementById('paragraph');
+            para.innerHTML = para.textContent;
+        }
+        function init(){
+            document.getElementsByClassName("btn")[0].addEventListener("click",searchHandler);
+        }
+        document.addEventListener("DOMContentLoaded",init)
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <input type="text" id="searchButton">
+        <button class="btn">Search</button>
+        <br><br>
+        <p id="paragraph">Professionally printed material in English typically does not indent the first paragraph, but indents those that
+            follow. For example, Robert Bringhurst states that we should "Set opening paragraphs flush left."[2] Bringhurst
+            explains as follows:
+            The function of a paragraph is to mark a pause, setting the paragraph apart from what precedes it. If a
+            paragraph is preceded by a title or subhead, the indent is superfluous and can therefore be omitted.[2]
+            The Elements of Typographic Style states that "at least one en [space]" should be used to indent paragraphs
+            after the first,[2] noting that that is the "practical minimum".[3] An em space is the most commonly used
+            paragraph indent.[3] Miles Tinker, in his book Legibility of Print, concluded that indenting the first line of
+            paragraphs increases readability by 7%, on average.[4]
+            
+           </p>
+                </div>
+                </body>
+
+</html>
